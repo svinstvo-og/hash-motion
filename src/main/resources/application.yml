@@ -1,18 +1,41 @@
 spring:
   application:
     name: hash-service
+
   datasource:
     url: jdbc:postgresql://localhost:5430/postgres
     username: postgres
     password: zxca
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
+
   data:
     redis:
       host: localhost
       port: 6379
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:29092
+      group-id: motion-hash
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            use:
+              type:
+                headers: false
+            trusted:
+              packages: "*"
+            use-type-headers: false
+    producer:
+      bootstrap-servers: localhost:29092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 server:
   port: 8074
