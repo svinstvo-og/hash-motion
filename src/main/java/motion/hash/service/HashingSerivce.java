@@ -1,11 +1,13 @@
 package motion.hash.service;
 
+import lombok.extern.slf4j.Slf4j;
 import motion.hash.repository.HashRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 
 @Service
+@Slf4j
 public class HashingSerivce {
     private final HashRepository hashRepository;
 
@@ -33,6 +35,7 @@ public class HashingSerivce {
 
     public String generateUniqueHash() {
         long seqNum = hashRepository.getNextSequenceNumber();
+        log.info("Retrieved sequence number: {}", seqNum);
         return encode(seqNum);
     }
 }
