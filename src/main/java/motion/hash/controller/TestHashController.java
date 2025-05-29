@@ -17,7 +17,7 @@ public class TestHashController {
 
     @GetMapping("/hash")
     public String generateHash() {
-        return hashingSerivce.generateUniqueHash();
+        return hashingSerivce.generateHash();
     }
 
 }
