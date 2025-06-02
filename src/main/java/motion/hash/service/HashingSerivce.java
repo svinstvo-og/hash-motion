@@ -19,7 +19,7 @@ public class HashingSerivce {
     public HashingSerivce(HashRepository hashRepository, RedisTemplate<String, String> redisTemplate) {
         this.hashRepository = hashRepository;
         this.redisTemplate = redisTemplate;
-        
+
         checkAvailability();
     }
 

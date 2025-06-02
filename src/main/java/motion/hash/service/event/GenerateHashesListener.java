@@ -16,7 +16,7 @@ public class GenerateHashesListener {
         this.hashingSerivce = hashingSerivce;
     }
 
-    @KafkaListener(topics = "${kafka.topic.name:generate-hashes}")
+    @KafkaListener(topics = "${kafka.topic.name:refill-hashes}")
     public void generateHashesHandler() {
         log.info("Received GenerateHashes event");
         hashingSerivce.putHashes(300);
